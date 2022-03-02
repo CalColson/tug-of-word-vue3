@@ -16,15 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import VueformToggle from '@vueform/toggle'
-
-// MAYBE: extract this to store... right now it's useful to keep here for component testing
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { ref } from 'vue'
-
-library.add(faMoon, faSun)
 
 const props = defineProps<{
   isInitiallyDarkMode: boolean
