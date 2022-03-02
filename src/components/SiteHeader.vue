@@ -7,28 +7,39 @@
     <h6 class="sh--nav-item">contact</h6>
 
     <!-- right side items -->
-    <!-- TODO: Add tests for this! -->
     <div id="sh--light-dark-toggle">
       <FontAwesomeIcon class="sh--fa-icon" :icon="['far', 'sun']"></FontAwesomeIcon>
-      <VueformToggle v-model="value" @change="(e) => onDarkModeToggle(!!e)" />
+      <VueformToggle v-model="isDarkMode" @change="(e) => onDarkModeChanged(!!e)" />
       <FontAwesomeIcon class="sh--fa-icon" :icon="['far', 'moon']"></FontAwesomeIcon>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import VueformToggle from '@vueform/toggle'
+
+// MAYBE: extract this to store... right now it's useful to keep here for component testing
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { ref } from 'vue'
 
-const value = ref(false)
+library.add(faMoon, faSun)
 
-function onDarkModeToggle(isDarkModeToggled: boolean) {
+const props = defineProps<{
+  isInitiallyDarkMode: boolean
+}>()
+
+const isDarkMode = ref(props.isInitiallyDarkMode)
+
+function onDarkModeChanged(isDarkModeToggled : boolean) {
+  // console.log(`isDarkModeToggled: ${isDarkModeToggled}`)
   if (isDarkModeToggled) {
     document.querySelector('body')?.classList.add('dark')
   } else {
     document.querySelector('body')?.classList.remove('dark')
   }
 }
-
 </script>
 
 <style lang="scss" scoped>

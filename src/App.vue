@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <SiteHeader />
+      <SiteHeader :is-initially-dark-mode="false" />
     </nav>
   </header>
 
