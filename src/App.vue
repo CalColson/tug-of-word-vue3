@@ -74,6 +74,8 @@ body {
   color: $text;
   background-color: $bg;
 
+  font-family: 'Noto Sans', sans-serif;
+
   &.dark {
     color: $text-light;
     background-color: $bg-dark;
