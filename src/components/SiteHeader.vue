@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
   isInitiallyDarkMode: boolean
@@ -24,13 +24,20 @@ const props = defineProps<{
 
 const isDarkMode = ref(props.isInitiallyDarkMode)
 
-function onDarkModeChanged(isDarkModeToggled : boolean) {
-  // console.log(`isDarkModeToggled: ${isDarkModeToggled}`)
-  if (isDarkModeToggled) {
+onMounted(() => {
+  setDarkMode(isDarkMode.value)
+})
+
+function setDarkMode(isDarkMode: boolean) {
+  if (isDarkMode) {
     document.querySelector('body')?.classList.add('dark')
   } else {
     document.querySelector('body')?.classList.remove('dark')
   }
+}
+function onDarkModeChanged(isDarkModeToggled: boolean) {
+  // console.log(`isDarkModeToggled: ${isDarkModeToggled}`)
+  setDarkMode(isDarkModeToggled)
 }
 </script>
 
