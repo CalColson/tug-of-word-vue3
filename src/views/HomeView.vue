@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import HomeButtonsVue from '@/components/HomeButtons.vue'
 </script>
 
 <template>
-  <main>
-    this is the home view
-  </main>
+  <HomeButtonsVue />
 </template>

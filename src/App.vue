@@ -1,11 +1,12 @@
 <template>
-  <header>
+  <header id="app-header">
     <nav>
       <SiteHeader :is-initially-dark-mode="false" />
     </nav>
   </header>
-
-  <RouterView />
+  <main id="app-main">
+    <RouterView />
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -62,13 +63,13 @@ html {
   width: 1rem;
 }
 ::-webkit-scrollbar-track {
-  background: $primary-light;
+  background: $primary-dark;
 }
 ::-webkit-scrollbar-thumb {
-  background: $primary;
+  background: $primary-light;
 }
 
-body {
+#app {
   min-height: 100vh;
 
   color: $text;
@@ -80,5 +81,15 @@ body {
     color: $text-light;
     background-color: $bg-dark;
   }
+}
+#app-header {
+  height: 15vh;
+
+  nav {
+    height: 100%;
+  }
+}
+#app-main {
+  min-height: 85vh;
 }
 </style>

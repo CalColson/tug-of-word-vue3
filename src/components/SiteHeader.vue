@@ -30,9 +30,9 @@ onMounted(() => {
 
 function setDarkMode(isDarkMode: boolean) {
   if (isDarkMode) {
-    document.querySelector('body')?.classList.add('dark')
+    document.querySelector('#app')?.classList.add('dark')
   } else {
-    document.querySelector('body')?.classList.remove('dark')
+    document.querySelector('#app')?.classList.remove('dark')
   }
 }
 function onDarkModeChanged(isDarkModeToggled: boolean) {
@@ -43,8 +43,7 @@ function onDarkModeChanged(isDarkModeToggled: boolean) {
 
 <style lang="scss" scoped>
 #site-header {
-  height: 15vh;
-
+  height: 100%;
   padding: 0 1rem;
 
   color: $text-light;
